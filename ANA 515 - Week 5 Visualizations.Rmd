@@ -1,0 +1,42 @@
+---
+title: "ANA 515 - Week 5 Visualizations"
+author: "Cesar Riano"
+date: "2022-09-24"
+output: word_document 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## section 1: loading the packages needed and the data
+
+```{r, include = TRUE}
+#The include = FALSE function hides both the code and output in my output document
+#Packages needed: 
+library(ggplot2)
+
+#Read in the data
+CR_data<-read.csv("student-mat.csv")
+
+```
+
+## Section 2: Exploratory visualizations plots - First plot: Distribution of age and school absences
+
+```{r abs-dist, echo = FALSE}
+
+qplot(age, absences, data = CR_data, color = sex)+
+  labs(title = "Absences in school decrease as age increases")
+
+```
+## Section 3: Exploratory visualizations plots - Second plot: Distribution of exam grades
+
+```{r grade-dist, echo = FALSE}
+# Histogram plot line colors by groups
+ggplot(CR_data, aes(x=G1, color=sex)) +
+  geom_histogram(fill="white")+
+  labs(title = "First exam grades distribution")
+```
+
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
